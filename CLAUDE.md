@@ -151,3 +151,21 @@ dependency) to fabricate an authenticated identity with a given `tenant_id` clai
 provider needed. 200 (header matches claim), 400 (authenticated but header missing), 401 (no
 `@TestSecurity` at all → anonymous), 403 (header present but doesn't match the claim), 404
 (authenticated request to a path with no matching resource).
+
+**Unit tests for the tenant/security classes** (`TenantHeaderGuardFilterTest.java`,
+`DynamicTenantConfigResolverTest.java`, `TenantRegistryTest.java`): plain JUnit tests (no
+`@QuarkusTest`, no container boot) that exercise each class in isolation, mocking its
+collaborators directly via the `quarkus-junit5-mockito` test dependency rather than going
+through a real HTTP request or OIDC flow:
+
+- `TenantHeaderGuardFilterTest` mocks `SecurityIdentity`/`ContainerRequestContext` and calls
+  `filter()` directly, covering the same branches `TenantResourceTest` covers end-to-end
+  (anonymous pass-through, missing/blank header → 400, claim mismatch/missing claim → 403,
+  matching header/claim → no exception) plus a blank-header case.
+- `DynamicTenantConfigResolverTest` mocks `RoutingContext`/`HttpServerRequest` and a mocked
+  `TenantRegistry`, calling `resolve()` directly and awaiting the returned `Uni`: missing/blank
+  header → `null`, known tenant header → the `OidcTenantConfig` the registry returned, unknown
+  tenant header → `null`.
+- `TenantRegistryTest` sets the registry's package-private config fields directly (same
+  package, no setters) and asserts `findConfig(...)` builds the expected `OidcTenantConfig`
+  for known tenants (`acme`, `globex`) and returns empty for unknown/blank tenant ids.
