@@ -1,0 +1,14 @@
+greeting:
+  message: "hello"
+
+quarkus:
+  datasource:
+    db-kind: postgresql
+  hibernate-orm:
+    multitenant: SCHEMA
+    schema-management:
+      strategy: none
+  flyway:
+    schemas: base,acme,globex
+    locations: classpath:db/migration
+    migrate-at-start: true
