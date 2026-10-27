@@ -1,14 +1,9 @@
-greeting:
-  message: "hello"
+tenant:
+  oidc:
+    base-url: "http://localhost:8180"
+    client-id: "backend-service"
+    client-secret: "secret"
 
 quarkus:
-  datasource:
-    db-kind: postgresql
-  hibernate-orm:
-    multitenant: SCHEMA
-    schema-management:
-      strategy: none
-  flyway:
-    schemas: base,acme,globex
-    locations: classpath:db/migration
-    migrate-at-start: true
+  oidc:
+    tenant-enabled: false
