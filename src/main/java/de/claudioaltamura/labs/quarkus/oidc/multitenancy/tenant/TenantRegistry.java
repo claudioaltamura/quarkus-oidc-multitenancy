@@ -1,4 +1,4 @@
-package com.caltaxy.labs.multitenancy.tenant;
+package de.claudioaltamura.labs.quarkus.oidc.multitenancy.tenant;
 
 import java.util.Optional;
 import java.util.Set;

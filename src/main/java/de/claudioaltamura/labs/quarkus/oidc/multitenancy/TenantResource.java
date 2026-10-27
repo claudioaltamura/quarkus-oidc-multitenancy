@@ -1,6 +1,6 @@
-package com.caltaxy.labs.multitenancy;
+package de.claudioaltamura.labs.quarkus.oidc.multitenancy;
 
-import com.caltaxy.labs.multitenancy.security.TokenClaims;
+import de.claudioaltamura.labs.quarkus.oidc.multitenancy.security.TokenClaims;
 import io.quarkus.security.Authenticated;
 import io.quarkus.security.identity.SecurityIdentity;
 import jakarta.inject.Inject;
@@ -13,9 +13,9 @@ import jakarta.ws.rs.core.MediaType;
  * Sample tenant-scoped endpoint, protected by a bearer access token obtained via the OAuth2
  * client credentials grant. The caller must send the same tenant id both as the {@code
  * tenant_id} header (used to pick which tenant's OIDC issuer validates the token - see
- * {@link com.caltaxy.labs.multitenancy.tenant.DynamicTenantConfigResolver}) and as the {@code
+ * {@link de.claudioaltamura.labs.quarkus.oidc.multitenancy.tenant.DynamicTenantConfigResolver}) and as the {@code
  * tenant_id} claim inside that token (enforced by
- * {@link com.caltaxy.labs.multitenancy.security.TenantHeaderGuardFilter}).
+ * {@link de.claudioaltamura.labs.quarkus.oidc.multitenancy.security.TenantHeaderGuardFilter}).
  */
 @Path("/api/tenant-info")
 @Authenticated

@@ -1,4 +1,4 @@
-package com.caltaxy.labs.multitenancy.tenant;
+package de.claudioaltamura.labs.quarkus.oidc.multitenancy.tenant;
 
 import io.quarkus.oidc.OidcRequestContext;
 import io.quarkus.oidc.OidcTenantConfig;
@@ -16,7 +16,7 @@ import jakarta.inject.Inject;
  *
  * <p>Resolving the config this way only decides which issuer/JWKS to validate against; it does
  * not by itself prove the caller is entitled to that tenant's data. See
- * {@link com.caltaxy.labs.multitenancy.security.TenantHeaderGuardFilter} for the BOLA check
+ * {@link de.claudioaltamura.labs.quarkus.oidc.multitenancy.security.TenantHeaderGuardFilter} for the BOLA check
  * that compares this header against the validated token's {@code tenant_id} claim.
  */
 @ApplicationScoped

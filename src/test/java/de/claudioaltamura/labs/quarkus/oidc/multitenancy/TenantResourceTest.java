@@ -1,4 +1,4 @@
-package com.caltaxy.labs.multitenancy;
+package de.claudioaltamura.labs.quarkus.oidc.multitenancy;
 
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.security.TestSecurity;

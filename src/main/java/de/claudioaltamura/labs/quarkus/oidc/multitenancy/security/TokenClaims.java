@@ -1,4 +1,4 @@
-package com.caltaxy.labs.multitenancy.security;
+package de.claudioaltamura.labs.quarkus.oidc.multitenancy.security;
 
 import io.quarkus.security.identity.SecurityIdentity;
 import org.eclipse.microprofile.jwt.JsonWebToken;

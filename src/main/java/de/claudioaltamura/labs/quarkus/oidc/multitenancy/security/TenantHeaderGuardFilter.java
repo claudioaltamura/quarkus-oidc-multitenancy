@@ -1,4 +1,4 @@
-package com.caltaxy.labs.multitenancy.security;
+package de.claudioaltamura.labs.quarkus.oidc.multitenancy.security;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import jakarta.ws.rs.ext.Provider;
 
 /**
  * BOLA (Broken Object Level Authorization) guard: the {@code tenant_id} request header is what
- * {@link com.caltaxy.labs.multitenancy.tenant.DynamicTenantConfigResolver} used to pick which
+ * {@link de.claudioaltamura.labs.quarkus.oidc.multitenancy.tenant.DynamicTenantConfigResolver} used to pick which
  * tenant's issuer to validate the token against, but a validly-signed token from tenant A's
  * issuer sent alongside tenant B's header would otherwise let a caller read/write tenant B's
  * data merely by changing a header. This filter closes that gap by requiring the header to
